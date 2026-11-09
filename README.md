@@ -187,6 +187,6 @@ A production implementation should use a durable shared store, idempotent order 
 ---
 
 <div align="center">
-  Built by <strong>Akash Singh</strong> for a Fingerprint Solutions Engineer demonstration.
+  Built by <strong>Akash Singh</strong> for a Fingerprint demonstration.
 </div>
 
