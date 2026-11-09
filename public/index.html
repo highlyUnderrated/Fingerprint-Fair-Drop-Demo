@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A presentation-ready Fingerprint device intelligence demo for fair-access limited product drops."
+    />
+    <title>The Mobile Store | Fair Drop Demo</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="The Mobile Store home">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+        <span>
+          <strong>The Mobile Store</strong>
+          <small>Limited Drop Lab</small>
+        </span>
+      </a>
+
+      <div class="header-status">
+        <span class="status-dot" id="serverStatusDot"></span>
+        <span id="serverStatus">Connecting to decision service...</span>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-copy">
+          <p class="eyebrow">Fair access, backed by device intelligence</p>
+          <h1 id="heroTitle">One limited phone.<br />One fair chance.</h1>
+          <p class="hero-description">
+            A live checkout demonstration showing how Fingerprint helps stop repeat buyers,
+            residential proxy abuse, and automated purchasing without adding friction for
+            trusted shoppers.
+          </p>
+
+          <div class="hero-metrics" aria-label="Drop policy">
+            <div><strong>1</strong><span>device limit</span></div>
+            <div><strong>3</strong><span>risk controls</span></div>
+            <div><strong>Live</strong><span>decisioning</span></div>
+          </div>
+        </div>
+
+        <div class="product-stage" aria-label="Aurora X1 limited edition phone">
+          <div class="drop-pill"><span></span> Drop live</div>
+          <div class="phone" aria-hidden="true">
+            <div class="phone-camera"><i></i><i></i><i></i></div>
+            <div class="phone-shine"></div>
+            <div class="phone-logo">M</div>
+          </div>
+          <div class="product-caption">
+            <div>
+              <span>Limited Edition</span>
+              <strong>Aurora X1</strong>
+            </div>
+            <strong>$1,750</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-layout" aria-label="Checkout demonstration">
+        <div class="checkout-card panel">
+          <div class="panel-heading">
+            <div>
+              <p class="step-label">Customer experience</p>
+              <h2>Secure checkout</h2>
+            </div>
+            <span class="secure-badge">Protected by Fingerprint</span>
+          </div>
+
+          <form id="checkoutForm">
+            <div class="field-grid">
+              <label>
+                <span>Account ID</span>
+                <input
+                  id="accountId"
+                  name="accountId"
+                  value="customer-001"
+                  autocomplete="off"
+                  required
+                />
+                <small>Use an internal ID, not an email address.</small>
+              </label>
+              <label>
+                <span>Full name</span>
+                <input
+                  id="fullName"
+                  name="fullName"
+                  value="Alex Morgan"
+                  autocomplete="name"
+                  required
+                />
+              </label>
+            </div>
+
+            <div class="shipping-box">
+              <div>
+                <span>Shipping to</span>
+                <strong>22 Pine Valley Street, California</strong>
+              </div>
+              <button type="button" class="text-button" disabled>Edit</button>
+            </div>
+
+            <div class="order-line">
+              <div class="mini-product" aria-hidden="true">X1</div>
+              <div>
+                <strong>Aurora X1 - Limited Edition</strong>
+                <span>Graphite / 512 GB / Qty 1</span>
+              </div>
+              <strong>$1,750</strong>
+            </div>
+
+            <button class="primary-button" id="checkoutButton" type="submit">
+              <span>Verify device & place order</span>
+              <span aria-hidden="true">&#8594;</span>
+            </button>
+            <p class="form-note">
+              Fingerprint runs at the checkout action, then the backend verifies the event
+              before inventory is reserved.
+            </p>
+          </form>
+        </div>
+
+        <aside class="decision-card panel" aria-labelledby="decisionTitle">
+          <div class="panel-heading">
+            <div>
+              <p class="step-label">Decision service</p>
+              <h2 id="decisionTitle">Risk intelligence</h2>
+            </div>
+            <span class="region-badge">AP / Mumbai</span>
+          </div>
+
+          <ol class="decision-steps" aria-label="Decision progress">
+            <li id="stepIdentify"><span>1</span><div><strong>Identify</strong><small>Recognize the device</small></div></li>
+            <li id="stepVerify"><span>2</span><div><strong>Verify</strong><small>Retrieve trusted signals</small></div></li>
+            <li id="stepDecide"><span>3</span><div><strong>Decide</strong><small>Apply store policy</small></div></li>
+          </ol>
+
+          <div class="empty-result" id="emptyResult">
+            <div class="scan-orbit" aria-hidden="true"><span></span></div>
+            <strong>Ready for a checkout</strong>
+            <p>The decision and supporting evidence will appear here.</p>
+          </div>
+
+          <div class="result" id="result" hidden>
+            <div class="result-heading">
+              <span class="decision-icon" id="decisionIcon">&#10003;</span>
+              <div>
+                <p id="decisionLabel">Approved</p>
+                <h3 id="decisionHeadline">Order approved</h3>
+              </div>
+            </div>
+            <p class="decision-reason" id="decisionReason"></p>
+            <p class="next-step" id="nextStep"></p>
+
+            <div class="simulation-notice" id="simulationNotice" hidden>
+              Presenter simulation: the real Fingerprint event was verified, then a clearly
+              labeled test signal was applied for a repeatable demonstration.
+            </div>
+
+            <div class="signal-grid" id="signalGrid"></div>
+
+            <details class="policy-details" open>
+              <summary>Policy trace</summary>
+              <ul id="policyTrace"></ul>
+            </details>
+
+            <button class="secondary-button" id="secondAccountButton" type="button" hidden>
+              Try the same device with another account
+            </button>
+          </div>
+        </aside>
+      </section>
+
+      <section class="presenter-panel panel" aria-labelledby="presenterTitle">
+        <div>
+          <p class="step-label">Presenter controls</p>
+          <h2 id="presenterTitle">Make every scenario repeatable</h2>
+          <p>
+            Live mode uses the actual returned signals. Simulation modes still verify a real
+            Fingerprint event, then apply one labeled risk signal for presentation reliability.
+          </p>
+        </div>
+
+        <label class="scenario-control">
+          <span>Checkout scenario</span>
+          <select id="scenario">
+            <option value="trusted">Simulate trusted baseline</option>
+            <option value="live">Live Fingerprint signals</option>
+            <option value="proxy">Simulate residential proxy</option>
+            <option value="bot">Simulate bad bot</option>
+          </select>
+        </label>
+
+        <button class="reset-button" id="resetButton" type="button">
+          Reset demo data
+        </button>
+      </section>
+
+      <section class="explanation" aria-labelledby="explanationTitle">
+        <div class="section-intro">
+          <p class="eyebrow">What the solution demonstrates</p>
+          <h2 id="explanationTitle">A layered decision, not a single blocklist</h2>
+          <p>
+            Device identity enforces the purchase limit. Smart Signals add context so the
+            store can block automation and challenge uncertain traffic instead of rejecting
+            every unusual shopper.
+          </p>
+        </div>
+
+        <div class="control-cards">
+          <article>
+            <span class="card-number">01</span>
+            <h3>Persistent device identity</h3>
+            <p>Connect multiple accounts and changing IP addresses back to the same device.</p>
+            <span class="control-tag">Visitor ID</span>
+          </article>
+          <article>
+            <span class="card-number">02</span>
+            <h3>Network risk context</h3>
+            <p>Detect residential or datacenter proxies and route them to step-up verification.</p>
+            <span class="control-tag">Proxy Detection</span>
+          </article>
+          <article>
+            <span class="card-number">03</span>
+            <h3>Automation prevention</h3>
+            <p>Keep headless browsers and scripted checkouts from consuming limited inventory.</p>
+            <span class="control-tag">Bot Detection</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="activity panel" aria-labelledby="activityTitle">
+        <div class="panel-heading">
+          <div>
+            <p class="step-label">Backend evidence</p>
+            <h2 id="activityTitle">Recent decisions</h2>
+          </div>
+          <span id="attemptCount">0 attempts</span>
+        </div>
+        <div class="activity-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Account</th>
+                <th>Visitor</th>
+                <th>Scenario</th>
+                <th>Decision</th>
+              </tr>
+            </thead>
+            <tbody id="activityBody">
+              <tr class="empty-row"><td colspan="5">No checkout attempts yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>The Mobile Store / Solutions Engineering Demo</span>
+      <span>Fingerprint v4 / Server-verified decisions</span>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
