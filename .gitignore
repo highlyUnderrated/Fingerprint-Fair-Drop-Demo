@@ -1,0 +1,18 @@
+node_modules/
+.npm-cache/
+
+.env
+.env.*
+!.env.example
+
+.DS_Store
+*.log
+npm-debug.log*
+
+# Presentation and local build artifacts do not belong in this repository.
+*.ppt
+*.pptx
+*.key
+.deck-build/
+output/
+
