@@ -78,25 +78,39 @@ The public key is intentionally visible in browser code. The Server API secret m
 
 If you use another Fingerprint workspace, update the public key and browser region in `public/app.js`, then start the backend with the matching Server API secret and region.
 
+## Discovery checkpoint
+
+The demo begins with an explicit policy checkpoint so the technical flow stays tied to the customer conversation. The default working assumptions are:
+
+- A customer may complete one successful device purchase per product drop, even if they create another account.
+- A clean first purchase should complete without additional friction.
+- A residential proxy by itself should trigger step-up verification rather than an automatic rejection.
+- A verified bad bot, replayed or tampered event, or device with a prior successful purchase should be denied.
+- Shared-device households, returns, and replacement devices need a defined exception path in production.
+
+During a real discovery session, confirm or change these assumptions before presenting the policy as a recommendation.
+
 ## Demo scenarios
 
 The scenario selector makes the presentation repeatable. Every scenario first generates and verifies a real Fingerprint event. The selected presenter scenario then applies a clearly labeled test signal before the store policy runs.
 
 | # | Scenario | How to run it | Expected outcome |
 |---:|---|---|---|
-| 1 | Trusted first purchase | Click **Reset demo data**, select **Simulate trusted baseline**, and submit `customer-001`. | **Approve** and create an order. |
+| 1 | Trusted first purchase | Click **Reset demo data**, select **Legitimate first purchase**, and submit `customer-001`. | **Approve** and create an order. |
 | 2 | New account, same device | After approval, click **Try the same device with another account** and submit again. | **Deny** because that Visitor ID already purchased the drop. |
-| 3 | Residential proxy | Reset, select **Simulate residential proxy**, and submit. | **Review** with step-up verification instead of an automatic block. |
-| 4 | Bad bot | Reset, select **Simulate bad bot**, and submit. | **Deny** before inventory is reserved. |
+| 3 | Residential proxy | Reset, select **Residential proxy risk**, and submit. | **Review** with step-up verification instead of an automatic block. |
+| 4 | Bad bot | Reset, select **Automated checkout bot**, and submit. | **Deny** before inventory is reserved. |
 | 5 | Live signals | Reset, select **Live Fingerprint signals**, and submit. | Use the unmodified signals returned for the current browser and network. |
 
 ### Recommended live presentation sequence
 
-1. Start with the trusted purchase and point out the verified Visitor ID and policy trace.
-2. Change only the account and show that the device remains the same.
-3. Reset and demonstrate why a residential proxy creates friction rather than an immediate rejection.
-4. Reset and show the automated checkout denial.
-5. Use **Live Fingerprint signals** only as an optional follow-up because its outcome depends on the current device and network.
+1. Restate the policy assumptions agreed during discovery and ask the customer to confirm them.
+2. Start with the trusted purchase and point out the verified Visitor ID and policy trace.
+3. Change only the account and show that the device remains the same.
+4. Reset and demonstrate why a residential proxy creates friction rather than an immediate rejection.
+5. Reset and show the automated checkout denial.
+6. Ask which threshold or exception the customer would change based on the evidence.
+7. Use **Live Fingerprint signals** only as an optional follow-up because its outcome depends on the current device and network.
 
 ### Expected results
 

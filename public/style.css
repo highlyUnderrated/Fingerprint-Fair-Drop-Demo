@@ -377,6 +377,65 @@ main {
   box-shadow: 0 18px 50px rgba(26, 35, 54, 0.07);
 }
 
+.discovery-checkpoint {
+  margin: 0 0 24px;
+  padding: 28px 30px;
+  display: grid;
+  grid-template-columns: 0.78fr 1.22fr;
+  gap: 34px;
+  align-items: center;
+  border-color: rgba(255, 93, 61, 0.24);
+  background:
+    linear-gradient(115deg, rgba(255, 93, 61, 0.07), transparent 48%),
+    var(--paper);
+}
+
+.checkpoint-intro h2 {
+  margin: 0;
+  font-size: 27px;
+  letter-spacing: -0.035em;
+}
+
+.checkpoint-intro > p:last-child {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.checkpoint-rules {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.checkpoint-rules div {
+  min-width: 0;
+  padding: 13px 14px;
+  border-left: 3px solid var(--orange);
+  border-radius: 0 10px 10px 0;
+  background: rgba(244, 246, 249, 0.86);
+}
+
+.checkpoint-rules strong,
+.checkpoint-rules span {
+  display: block;
+}
+
+.checkpoint-rules strong {
+  color: var(--orange-dark);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.checkpoint-rules span {
+  margin-top: 5px;
+  font-size: 11px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
 .demo-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1125,6 +1184,10 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .discovery-checkpoint {
+    grid-template-columns: 1fr;
+  }
+
   .presenter-panel {
     grid-template-columns: 1fr 1fr;
   }
@@ -1198,8 +1261,13 @@ footer {
   .field-grid,
   .signal-grid,
   .control-cards,
-  .presenter-panel {
+  .presenter-panel,
+  .checkpoint-rules {
     grid-template-columns: 1fr;
+  }
+
+  .discovery-checkpoint {
+    padding: 20px;
   }
 
   .decision-steps small {

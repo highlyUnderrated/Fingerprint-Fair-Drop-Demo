@@ -64,6 +64,24 @@
         </div>
       </section>
 
+      <section class="discovery-checkpoint panel" aria-labelledby="checkpointTitle">
+        <div class="checkpoint-intro">
+          <p class="step-label">Discovery checkpoint</p>
+          <h2 id="checkpointTitle">Policy agreed for this working session</h2>
+          <p>
+            These assumptions turn The Mobile Store's business rule into a testable checkout
+            policy. In a customer session, we would change them before the demo if discovery
+            produced a different answer.
+          </p>
+        </div>
+        <div class="checkpoint-rules" aria-label="Agreed demo policy">
+          <div><strong>Eligibility</strong><span>One successful device purchase per drop</span></div>
+          <div><strong>Low risk</strong><span>Approve the first eligible purchase</span></div>
+          <div><strong>Uncertain risk</strong><span>Step up residential proxy traffic</span></div>
+          <div><strong>High confidence abuse</strong><span>Deny bots, replay, tampering, and repeat devices</span></div>
+        </div>
+      </section>
+
       <section class="demo-layout" aria-label="Checkout demonstration">
         <div class="checkout-card panel">
           <div class="panel-heading">
@@ -181,20 +199,21 @@
       <section class="presenter-panel panel" aria-labelledby="presenterTitle">
         <div>
           <p class="step-label">Presenter controls</p>
-          <h2 id="presenterTitle">Make every scenario repeatable</h2>
+          <h2 id="presenterTitle">Test the agreed policy</h2>
           <p>
             Live mode uses the actual returned signals. Simulation modes still verify a real
-            Fingerprint event, then apply one labeled risk signal for presentation reliability.
+            Fingerprint event, then apply one labeled risk signal so each customer scenario is
+            repeatable.
           </p>
         </div>
 
         <label class="scenario-control">
           <span>Checkout scenario</span>
           <select id="scenario">
-            <option value="trusted">Simulate trusted baseline</option>
+            <option value="trusted">Legitimate first purchase</option>
             <option value="live">Live Fingerprint signals</option>
-            <option value="proxy">Simulate residential proxy</option>
-            <option value="bot">Simulate bad bot</option>
+            <option value="proxy">Residential proxy risk</option>
+            <option value="bot">Automated checkout bot</option>
           </select>
         </label>
 
@@ -205,8 +224,8 @@
 
       <section class="explanation" aria-labelledby="explanationTitle">
         <div class="section-intro">
-          <p class="eyebrow">What the solution demonstrates</p>
-          <h2 id="explanationTitle">A layered decision, not a single blocklist</h2>
+          <p class="eyebrow">Proposed control</p>
+          <h2 id="explanationTitle">How the policy addresses the reported abuse</h2>
           <p>
             Device identity enforces the purchase limit. Smart Signals add context so the
             store can block automation and challenge uncertain traffic instead of rejecting
