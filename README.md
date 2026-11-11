@@ -54,7 +54,7 @@ The browser sends only the Fingerprint event ID with the checkout request. The b
 ## Quick start
 
 ```bash
-cd fingerprint-mobile-store-demo
+cd Fingerprint-Fair-Drop-Demo
 npm ci
 npm run check
 npm start
@@ -151,7 +151,7 @@ The backend evaluates checkout attempts in this order:
 ## Project structure
 
 ```text
-fingerprint-mobile-store-demo/
+Fingerprint-Fair-Drop-Demo/
 ├── docs/
 │   └── images/          README screenshots
 ├── public/
